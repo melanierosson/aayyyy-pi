@@ -20,6 +20,51 @@
     fetch('https://tweets-v2.prestoapi.com/api/tweets2')
     .then(response => response.json())
     .then(data => console.log(data));
+    
+    // api url 
+    const api_url =  
+          "https://tweets-v2.prestoapi.com/api/tweets2"; 
+
+    // Defining async function 
+    async function getapi(url) { 
+
+        // Storing response 
+        const response = await fetch(url); 
+
+        // Storing data in form of JSON 
+        var data = await response.json(); 
+        console.log(data); 
+        if (response) { 
+            hideloader(); 
+        } 
+        show(data); 
+    } 
+    // Calling that async function 
+    getapi(api_url); 
+
+    // Function to define innerHTML for HTML table 
+//     function show(data) { 
+//         let tab =  
+//             `<tr> 
+//               <th>test</th> 
+//               <th>test</th> 
+//               <th>test</th> 
+//               <th>test</th> 
+//              </tr>`; 
+
+//         // Loop to access all rows  
+//         for (let r of data.list) { 
+//             tab += `<tr>  
+//         <td>${r.name} </td> 
+//         <td>${r.office}</td> 
+//         <td>${r.position}</td>  
+//         <td>${r.salary}</td>           
+//     </tr>`; 
+//         } 
+//         // Setting innerHTML as tab variable 
+//         document.getElementById("employees").innerHTML = tab; 
+//     } 
+
   </script>
 
 </head>
@@ -34,7 +79,7 @@
         <div class="under-construction">
           <p class="lead">Console for now</p>
         </div>
-        <div>
+        <div id="content">
           
         </div>
 
