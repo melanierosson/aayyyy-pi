@@ -17,55 +17,35 @@
   <link href="./styles.css" rel="stylesheet">
 
   <script>
-    // ATTEMPT 1 to console log data
-    fetch('https://twiiiit.prestoapi.com/api/twiit')
-    .then(response => response.json())
-    .then(data => console.log(data));
-    
-    // ATTEMPT 2 to console log data
-    // api url 
-    const api_url =  
-          "https://twiiiit.prestoapi.com/api/twiit"; 
+    // fetch('https://trumptweets.prestoapi.com/api/trumptweets')
+    function createNode(element) {
+        return document.createElement(element);
+    }
 
-    // Defining async function 
-    async function getapi(url) { 
+    function append(parent, el) {
+      return parent.appendChild(el);
+    }
 
-        // Storing response 
-        const response = await fetch(url); 
+    const ul = document.getElementById('tweet-trump');
+    const url = 'https://trumptweets.prestoapi.com/api/trumptweets';
+    console.log(url);
 
-        // Storing data in form of JSON 
-        var data = await response.json(); 
-        console.log(data); 
-//         if (response) { 
-//             hideloader(); 
-//         } 
-        show(data); 
-    } 
-    // Calling that async function 
-    getapi(api_url); 
-
-    // Function to define innerHTML for HTML table 
-//     function show(data) { 
-//         let tab =  
-//             `<tr> 
-//               <th>test</th> 
-//               <th>test</th> 
-//               <th>test</th> 
-//               <th>test</th> 
-//              </tr>`; 
-
-//         // Loop to access all rows  
-//         for (let r of data.list) { 
-//             tab += `<tr>  
-//         <td>${r.name} </td> 
-//         <td>${r.office}</td> 
-//         <td>${r.position}</td>  
-//         <td>${r.salary}</td>           
-//     </tr>`; 
-//         } 
-//         // Setting innerHTML as tab variable 
-//         document.getElementById("employees").innerHTML = tab; 
-//     } 
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+      let tweets = data.results;
+      console.log(tweets);
+      return tweets.map(function(tweet) {
+        let li = createNode('li');
+        let span = createNode('span');
+        span.innerHTML = `${tweet.created_at} ${tweet.text}`;
+        append(li, span);
+        append(ul, li);
+      })
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
 
   </script>
 
@@ -81,11 +61,10 @@
         <div class="under-construction">
           <p class="lead">Console for now</p>
         </div>
-        <div id="content">
-          
-        </div>
 
-        </div>
+        <table id="tweet-trump">
+
+        </table>
 
       </div>
     </div>
