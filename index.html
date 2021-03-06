@@ -10,6 +10,9 @@
 
   <title>Trump Tweet Generator</title>
 
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="./twitter.png"/>
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -18,7 +21,7 @@
 
   <script>
     const ul = document.getElementById('tweet-trump');
-    const url = 'https://trumptweets.prestoapi.com/api/trumptweets';
+    const url = 'https://trumptweets.prestoapi.com/api/trump';
     console.log(url);
 
     fetch(url)
@@ -29,12 +32,12 @@
       function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
       }
-      let randomTweet = getRandomInt(250);
+      let randomTweet = getRandomInt(130);
 
       var clickRandomTweet = function() {
-        randomTweet = getRandomInt(250);
+        randomTweet = getRandomInt(130);
         const li = document.getElementById('li');
-        return li.innerHTML = `${tweets[randomTweet].created_at} <br/> ${tweets[randomTweet].text}`;
+        return li.innerHTML = `<span class="blue">${tweets[randomTweet].created_at}</span> <br/> ${tweets[randomTweet].text}`;
       }
 
       clickRandomTweet();
@@ -57,16 +60,26 @@
       <div class="col-lg-12 text-center">
         <img width="160px" src="https://media.giphy.com/media/6L015gMEW3pFC/giphy.gif"/>
         <h1> 
-          <img src="https://img.icons8.com/fluent/48/000000/twitter.png"/>
+          <img src="./twitter.png"/>
           Trump Tweets
         </h1>
         <h2>
           <strong>Generate Random Trump Tweets</strong><br/>
-          <small>PrestoAPI middleware product testing</small>
+          <small>
+            <a href="https://prestoapi.com/" target="_blank">
+              PrestoAPI
+            </a>
+            middleware product testing
+          </small>
         </h2>
 
         <div id="tweet-container">
-          <h3>@realdonaldtrump</h3>
+          <h3>
+            <a href="https://twitter.com/realdonaldtrump" target="_blank">
+              <img src="./twitter.png" width="20px"/> 
+              @realdonaldtrump
+            </a>
+          </h3>
           <ul id="tweet-trump">
             <li id="li"></li>
           </ul>
