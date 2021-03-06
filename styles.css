@@ -1,2 +1,51 @@
 body {
+	background-color:#3aa1f255;
+}
+ul {
+	padding: 0;
+	margin: 0;
+}
+ul li {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	font-weight:800;
+	margin-top:2rem;
+}
+h2 {
+	font-size:1.65rem;
+	margin-bottom:1.5rem;
+}
+h3 {
+	font-size:1.5rem;
+	margin-top:0;
+}
+
+#tweet-container {
+	border:1px solid #3aa1f2;
+	border-radius:1rem;
+	padding:1rem;
+	max-width:48rem;
+	margin:auto;
+	background-color:#FFF;
+	min-height:158px;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-content:center;
+	align-items:center;
+}
+
+button {
+	background-color:#3aa1f2;
+	padding:1rem 2rem;
+	border-radius:2rem;
+	border:none;
+	margin:2rem auto auto auto;
+	color:#FFF;
+	font-weight:600;
+	font-size:1.25rem;
 }

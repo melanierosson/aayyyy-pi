@@ -8,7 +8,7 @@
   <meta name="description" content="Let's play with PrestoAPI">
   <meta name="author" content="Melanie Panem">
 
-  <title>Hilariously Random Tweet Generator</title>
+  <title>Trump Tweet Generator</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -17,9 +17,43 @@
   <link href="./styles.css" rel="stylesheet">
 
   <script>
-    fetch('https://tweets-v2.prestoapi.com/api/tweets2')
-    .then(response => response.json())
-    .then(data => console.log(data));
+    // fetch('https://trumptweets.prestoapi.com/api/trumptweets')
+
+    function createNode(element) {
+        return document.createElement(element);
+    }
+
+    function append(parent, el) {
+      return parent.appendChild(el);
+    }
+
+    const url = 'https://trumptweets.prestoapi.com/api/trumptweets';
+    console.log(url);
+
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) { 
+      const tweets = data;
+
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
+      let randomTweet = getRandomInt(250);
+
+      var clickRandomTweet = function() {
+        randomTweet = getRandomInt(250);
+        const li = document.getElementById('li');
+        return li.innerHTML = `${tweets[randomTweet].created_at} <br/> ${tweets[randomTweet].text}`;
+      }
+
+      clickRandomTweet();
+
+      document.getElementById('generator').addEventListener('click', clickRandomTweet);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
   </script>
 
 </head>
@@ -30,15 +64,20 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h1>Generate Random Tweet</h1>
-        <div class="under-construction">
-          <p class="lead">Console for now</p>
-        </div>
-        <div class="social">
+        <h1>Trump Tweets</h1>
+        <h2>
+          <strong>Generate Random Trump Tweets</strong><br/>
+          <small>PrestoAPI middleware product testing</small>
+        </h2>
 
+        <div id="tweet-container">
+          <h3>@realdonaldtrump</h3>
+          <ul id="tweet-trump">
+            <li id="li"></li>
+          </ul>
         </div>
 
-        </div>
+        <button id="generator">Generate Tweet</button>
 
       </div>
     </div>
