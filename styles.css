@@ -1,6 +1,10 @@
 body {
 	background-color:#3aa1f255;
 }
+#trump-gif {
+	border-radius:50%;
+	margin-top:0.625rem;
+}
 ul {
 	padding: 0;
 	margin: 0;
@@ -14,13 +18,17 @@ span.blue {
 	color:#3aa1f2;
 	font-weight:600;
 }
+small {
+	font-size:1rem;
+	font-weight:500;
+}
 
 h1 {
 	font-weight:800;
 	margin-top:1rem;
 }
 h2 {
-	font-size:1.65rem;
+	font-size:1.6rem;
 	margin-bottom:1.5rem;
 }
 h3 {
